@@ -74,8 +74,8 @@ function addBookToGrid(book) {
 	const hasRead = document.createElement("span");
 
   container.classList.add("card");
-  
-  title.textContent = book.title;
+
+  title.textContent = `"${book.title}"`;
   author.textContent = book.author;
   pages.textContent = book.pages;
   hasRead.textContent = book.hasRead;
