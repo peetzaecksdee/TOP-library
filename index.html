@@ -3,9 +3,37 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<script src="app.js" defer></script>
 		<title>Your Library</title>
 	</head>
 	<body>
-    
-  </body>
+		<header>
+			<span>Your Library</span>
+		</header>
+		<main>
+			<div class="cards">
+			</div>
+			<dialog id="addBook">
+				<form id="addBookForm">
+					<h2>Add a book</h2>
+					<input type="text" id="title" placeholder="Title" required maxlength="100">
+					<input type="text" id="author" placeholder="Author" required maxlength="100">
+					<input type="number" id="pages" placeholder="Pages" required max="5000">
+					<div>
+						<label>Have you read it?</label>
+						<input type="checkbox" id="hasRead">
+					</div>
+					<button id="confirmBtn" type="submit">Confirm</button>
+					<button id="cancelBtn">Cancel</button>
+				</form>
+			</dialog>
+			<button id="add">+ Add Book</button>
+		</main>
+		<footer></footer>
+	</body>
 </html>
