@@ -4,8 +4,8 @@
   --black: #0c0c0c;
   --background: #eeeeee;
   --button-color: #fefefe;
-  --button-hover: #f0f0f0;
-  --button-focus: #e6e6e6;
+  --green: #55ff55;
+  --red: #ff5555;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,8 +14,6 @@
     --black: #eeeeee;
     --background: #444444;
     --button-color: #272727;
-    --button-hover: #2c2c2c;
-    --button-focus: #303030;
   }
 }
 
@@ -33,11 +31,11 @@ button {
 }
 
 button:hover {
-  background-color: var(--button-hover);
+  filter: brightness(90%);
 }
 
 button:active {
-  background-color: var(--button-focus);
+  filter: brightness(80%);
 }
 
 body {
@@ -88,6 +86,19 @@ main {
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
+}
+
+.card > .title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.card > .author {
+  font-style: italic;
+}
+
+.card > button {
+  height: 2rem;
 }
 
 #add {
@@ -150,4 +161,12 @@ input[type=number] {
 
 input:focus {
   border-bottom: 1.7px solid var(--black);
+}
+
+.btn-green {
+  background-color: var(--green);
+}
+
+.btn-red {
+  background-color: var(--red);
 }

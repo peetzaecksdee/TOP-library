@@ -25,6 +25,10 @@ class YourLibrary {
 	getBook(title) {
 		return this.yourLibrary.find((yourBook) => yourBook.title === title);
 	}
+
+	removeBook(title) {
+		this.yourLibrary = this.yourLibrary.filter((book) => book.title !== title);
+	}
 }
 
 function updateCardGrid() {
@@ -61,9 +65,26 @@ function addBookToLibrary(event) {
 	}
 
 	yourLibrary.addBook(newBook);
-  updateCardGrid();
+	updateCardGrid();
 
 	closeForm();
+}
+
+function removeBook(book) {
+	yourLibrary.removeBook(book.title);
+	updateCardGrid();
+}
+
+function isBookRead(hasRead, btn) {
+	switch (hasRead) {
+		case true:
+			btn.classList.add("btn-green");
+			btn.classList.remove("btn-red");
+			break;
+		default:
+			btn.classList.add("btn-red");
+			btn.classList.remove("btn-green");
+	}
 }
 
 function addBookToGrid(book) {
@@ -71,20 +92,33 @@ function addBookToGrid(book) {
 	const title = document.createElement("span");
 	const author = document.createElement("span");
 	const pages = document.createElement("span");
-	const hasRead = document.createElement("span");
+	const hasRead = document.createElement("button");
+	const removeBtn = document.createElement("button");
 
-  container.classList.add("card");
+	container.classList.add("card");
+	title.classList.add("title");
+	author.classList.add("author");
 
-  title.textContent = `"${book.title}"`;
-  author.textContent = book.author;
-  pages.textContent = book.pages;
-  hasRead.textContent = book.hasRead;
+	title.textContent = `"${book.title}"`;
+	author.textContent = `By ${book.author}`;
+	pages.textContent = `${book.pages} pages`;
+	hasRead.textContent = book.hasRead;
+	isBookRead(book.hasRead, hasRead);
+	removeBtn.textContent = "Remove";
 
 	container.appendChild(title);
 	container.appendChild(author);
 	container.appendChild(pages);
 	container.appendChild(hasRead);
+	container.appendChild(removeBtn);
 	cardGrid.appendChild(container);
+
+	removeBtn.onclick = () => removeBook(book);
+	hasRead.onclick = () => {
+		book.hasRead = !book.hasRead;
+		hasRead.textContent = book.hasRead;
+		isBookRead(book.hasRead, hasRead);
+	};
 }
 
 const yourLibrary = new YourLibrary();
